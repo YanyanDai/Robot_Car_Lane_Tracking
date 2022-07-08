@@ -14,20 +14,7 @@ utlis.initializeTrackbars(intialTrackBarVals)
 ser = sm.initconnection('/dev/ttyACM0', 115200)
 
 def trackLane(curveval,NoLane):
-    kCurveLR = [1.4,0.4] #kCurveLR[0]:Left  kCurveLR[1]:Right
-    rightComplemental = 8
-    if NoLane == 0:
-        #Left and Right
-        if curveval>0:
-            posTurn = kCurveLR[1]*curveval
-        else:
-            posTurn = kCurveLR[0]*curveval
-        posSpeed=40
-    else:
-        posTurn = 0
-        posSpeed = 0
     
-    sm.sendData(ser,[posSpeed,int(posTurn)+rightComplemental],4) #
 
 def main():
     img = cm.getImg(False,size=[240,120])
