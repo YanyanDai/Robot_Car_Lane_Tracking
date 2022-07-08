@@ -19,28 +19,19 @@ def getLaneCurve(img, display = 2):
     imgCopy = img.copy()
     imgResult = img.copy()
     ####step 1 image thresholding
-    imgThres = utlis.thresholding(img)
+
     ####step 2 image wraping
-    hT, wT, c = img.shape
-    points = utlis.valTrackbars(wT,hT)
-    imgWarp  = utlis.warpImg(imgThres, points, wT, hT)
-    imgWarpPoints = utlis.drawPoints(imgCopy,points)
+   
 
     ###step3 pixel summation
-    middlepoint, imgHist1 = utlis.getHistogram(imgWarp,minPer=0.5,display=True,region=4) #1/4 figure
-    curveAveragepoint, imgHist2 = utlis.getHistogram(imgWarp, minPer=0.9, display=True,region=1)
-    curveRaw = curveAveragepoint - middlepoint
+   
 
     ####Step 4 Averaging curve value
-    curveList.append(curveRaw)
-    if len(curveList)>avgVal:
-        curveList.pop(0)
-    curve = int(sum(curveList)/len(curveList))
+    
 
     #### Constraining curve value
     #curve = curve / 100
-    if curve > 100: curve = 100
-    if curve < -100: curve = -100
+    
 
     #### Step 5 Display
     if display != 0:
